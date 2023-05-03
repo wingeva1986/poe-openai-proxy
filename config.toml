@@ -9,7 +9,7 @@ proxy = ""
 
 # The gateway url for the Python backend of poe-api. Don't change this unless you modify external/api.py
 # Note that if you use docker this value should be changed into: http://external:5000
-gateway = "http://pyopen.internal:5000"
+gateway = "http://pyopen.internal"
 
 # The bot name to use from poe. `capybara` stands for `Sage`
 bot = "capybara"
