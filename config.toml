@@ -2,7 +2,7 @@
 port = 3700
 
 # A list of poe tokens. You can get them from the cookies on poe.com, they look like this: p-b=fdasac5a1dfa6%3D%3D
-tokens = ["fdasac5a1dfa6%3D%3D","d84ef53ad5f132sa%3D%3D"]
+tokens = ["tlxVCoi3YbdKJA_4tmrVXQ%3D%3D","rziR3NSYWC8172VEoTlblw%3D%3D"]
 
 # The proxy that will be used to connect to poe.com. Leave it blank if you do not use a proxy
 proxy = ""
