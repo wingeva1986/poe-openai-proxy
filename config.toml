@@ -5,7 +5,7 @@ port = 3700
 tokens = ["fdasac5a1dfa6%3D%3D","d84ef53ad5f132sa%3D%3D"]
 
 # The proxy that will be used to connect to poe.com. Leave it blank if you do not use a proxy
-proxy = 
+proxy = ""
 
 # The gateway url for the Python backend of poe-api. Don't change this unless you modify external/api.py
 # Note that if you use docker this value should be changed into: http://external:5000
