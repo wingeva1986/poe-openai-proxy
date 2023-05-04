@@ -13,6 +13,28 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
+
+        # 使用python环境
+        - name: Set up Python 3.x
+          uses: actions/setup-python@v2
+          with:
+            # Semantic version range syntax or exact version of a Python version
+            python-version: '3.x'
+            # Optional - x64 or x86 architecture, defaults to x64
+            architecture: 'x64'
+        # 打印pyton版本
+        - name: Display Python version
+          run: python -c "import sys; print(sys.version)"
+
+        - name: install python libs
+          run: |
+            pip3 install requests
+            pip3 install toml
+
+        # 执行python脚本
+        - name: mktoml
+          run:  python ./mktoml.py
+          
         - uses: superfly/flyctl-actions/setup-flyctl@master
         - run: flyctl deploy -a ${{ secrets.FLY_APP }}
           env:
