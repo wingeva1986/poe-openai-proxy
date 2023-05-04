@@ -12,7 +12,7 @@ proxy = ""
 gateway = "http://pyopen.internal:5000"
 
 # The bot name to use from poe. `capybara` stands for `Sage`
-bot = "capybara"
+bot = "chinchilla"
 
 # Use leading prompts to indicate roles if enabled. You'd better disable it if you are using tools like https://github.com/TheR1D/shell_gpt
 # 0:disable, 1:enable, 2:auto detect
