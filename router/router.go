@@ -31,9 +31,9 @@ func Setup(engine *gin.Engine) {
 			return
 		}
 		if req.Model == "gpt-4" {
-			client.Model := "beaver"
+			client.Model = "beaver"
 		} else {
-			client.Model := "chinchilla"
+			client.Model = "chinchilla"
 		}
 		
 		if req.Stream {
