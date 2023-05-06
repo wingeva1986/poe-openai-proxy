@@ -56,7 +56,7 @@ func Stream(c *gin.Context, req poe.CompletionRequest, client *poe.Client) {
 	c.Writer.Header().Set("Connection", "keep-alive")
 	w := c.Writer
 	flusher, _ := w.(http.Flusher)
-	ticker := time.NewTimer(60 * time.Second)
+	ticker := time.NewTimer(300 * time.Second)
 	defer ticker.Stop()
 	channel, err := client.Stream(req.Messages)
 	if err != nil {
