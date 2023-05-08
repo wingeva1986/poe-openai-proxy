@@ -40,7 +40,7 @@ func Setup(engine *gin.Engine) {
 		}
 		
 		if req.Stream {
-			util.Logger.Info("stream using client: " + client.Token)
+			util.Logger.Info("stream using client: " + client.Token + " with Model:"+ client.Model)
 			Stream(c, req, client)
 		} else {
 			util.Logger.Info("ask using client: " + client.Token)
