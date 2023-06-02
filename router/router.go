@@ -39,16 +39,8 @@ func Setup(engine *gin.Engine) {
 			c.JSON(500, err)
 			return
 		}
-		if req.Model == "gpt-4" {
-			client.Model = "beaver"
-		} else if req.Model == "gpt-claude" {
-			client.Model = "a2_2"
-		}else {
-			client.Model = "chinchilla"
-		}
-		
 		if req.Stream {
-			util.Logger.Info("stream using client: " + client.Token + " with Model:"+ client.Model)
+			util.Logger.Info("stream using client: " + client.Token)
 			Stream(c, req, client)
 		} else {
 			util.Logger.Info("ask using client: " + client.Token)
