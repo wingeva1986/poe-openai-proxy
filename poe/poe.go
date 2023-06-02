@@ -30,7 +30,6 @@ func Setup() {
 type Client struct {
 	Token string
 	Usage []time.Time
-	Model string
 }
 
 func NewClient(token string) (*Client, error) {
@@ -79,18 +78,25 @@ func (c Client) getContentToSend(messages []Message) string {
 	util.Logger.Debug("Generated content to send: " + content)
 	return content
 }
-func (c Client) Stream(messages []Message) (<-chan string, error) {
+func (c Client) Stream(messages []Message, model string) (<-chan string, error) {
 	channel := make(chan string, 1024)
 	content := c.getContentToSend(messages)
 	conn, _, err := websocket.DefaultDialer.Dial(conf.Conf.GetGatewayWsURL()+"/stream", nil)
 	if err != nil {
 		return nil, err
 	}
+
+	bot, ok := conf.Conf.Bot[model]
+	if !ok {
+		bot = "capybara"
+	}
+	util.Logger.Info("Stream using bot", bot)
+
 	err = conn.WriteMessage(websocket.TextMessage, []byte(c.Token))
 	if err != nil {
 		return nil, err
 	}
-	err = conn.WriteMessage(websocket.TextMessage, []byte(c.Model))
+	err = conn.WriteMessage(websocket.TextMessage, []byte(bot))
 	if err != nil {
 		return nil, err
 	}
@@ -115,11 +121,18 @@ func (c Client) Stream(messages []Message) (<-chan string, error) {
 	}(conn, channel)
 	return channel, nil
 }
-func (c Client) Ask(messages []Message) (*Message, error) {
+func (c Client) Ask(messages []Message, model string) (*Message, error) {
 	content := c.getContentToSend(messages)
+
+	bot, ok := conf.Conf.Bot[model]
+	if !ok {
+		bot = "capybara"
+	}
+	util.Logger.Info("Ask using bot", bot)
+
 	resp, err := httpClient.R().SetFormData(map[string]string{
 		"token":   c.Token,
-		"bot":     c.Model,
+		"bot":     bot,
 		"content": content,
 	}).Post("/ask")
 	if err != nil {
