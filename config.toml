@@ -38,7 +38,7 @@ api-timeout = 12
 [bot]
 	"gpt-3.5-turbo" = "chinchilla" # ChatGPT 3.5
 	"gpt-4" = "beaver" # ChatGPT 4
-	"gpt-3.5-turbo-0301" = "a2" # Claude-instant
+	"gpt-3.5-turbo-16k" = "agouti" # chatgpt-16k
 	"gpt-4-32k" = "vizcacha" # Claude-instant-100k
 	"gpt-4-0314" = "vizcacha" # Claude+
 	"gpt-Sage" = "capybara" # Add `gpt-` prefix for ChatGPT Raycast plugin to pick these up
@@ -48,6 +48,7 @@ api-timeout = 12
 	"gpt-Claude-instant-100k" = "a2_100k"
 	"gpt-Claude+" = "a2_2"
         "gpt-claude-2-100k" = "a2_2"
+	"gpt-google"="acouchy"
 	"Sage" = "capybara"
 	"ChatGPT" = "chinchilla"
 	"GPT-4" = "beaver"
