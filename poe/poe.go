@@ -74,7 +74,7 @@ func (c *Client) getContentToSend(messages []Message) string {
 		}
 	}
 	if simulateRoles {
-		content += "||>Assistant:\n"
+		content += "||>Assistant\n"
 	}
 	util.Logger.Debug("Generated content to send: " + content)
 	return content
