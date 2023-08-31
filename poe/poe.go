@@ -105,6 +105,10 @@ func (c *Client) Stream(messages []Message, model string) (<-chan string, error)
 	if err != nil {
 		return nil, err
 	}
+	bytes, err := err = conn.WriteMessage(websocket.TextMessage, []byte(json.Marshal(data))
+	if err != nil {
+		return nil, err
+	}
 	go func(conn *websocket.Conn, channel chan string) {
 		defer close(channel)
 		defer conn.Close()
