@@ -106,7 +106,8 @@ func (c *Client) Stream(messages []Message, model string, stop []string) (<-chan
 	if err != nil {
 		return nil, err
 	}
-	err = conn.WriteMessage(websocket.TextMessage, []byte(json.Marshal(stop)))
+	bytes, err := json.Marshal(stop)
+	err = conn.WriteMessage(websocket.TextMessage, bytes)
 	if err != nil {
 		return nil, err
 	}
