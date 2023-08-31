@@ -8,6 +8,7 @@ import (
 	"github.com/juzeon/poe-openai-proxy/util"
 	"sync"
 	"time"
+	"encoding/json"
 )
 
 var httpClient *resty.Client
@@ -79,7 +80,7 @@ func (c *Client) getContentToSend(messages []Message) string {
 	util.Logger.Debug("Generated content to send: " + content)
 	return content
 }
-func (c *Client) Stream(messages []Message, model string) (<-chan string, error) {
+func (c *Client) Stream(messages []Message, model string, stop []string) (<-chan string, error) {
 	channel := make(chan string, 1024)
 	content := c.getContentToSend(messages)
 	conn, _, err := websocket.DefaultDialer.Dial(conf.Conf.GetGatewayWsURL()+"/stream", nil)
@@ -105,7 +106,7 @@ func (c *Client) Stream(messages []Message, model string) (<-chan string, error)
 	if err != nil {
 		return nil, err
 	}
-	err = conn.WriteMessage(websocket.TextMessage, []byte(json.Marshal(data)))
+	err = conn.WriteMessage(websocket.TextMessage, []byte(json.Marshal(stop)))
 	if err != nil {
 		return nil, err
 	}
