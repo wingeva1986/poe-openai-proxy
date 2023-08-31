@@ -71,7 +71,7 @@ func Stream(c *gin.Context, req poe.CompletionRequest, client *poe.Client) {
 	timeout := time.Duration(conf.Conf.Timeout) * time.Second
 	ticker := time.NewTimer(timeout)
 	defer ticker.Stop()
-	channel, err := client.Stream(req.Messages, req.Model)
+	channel, err := client.Stream(req.Messages, req.Model, req.Stop)
 	if err != nil {
 		c.JSON(500, err.Error())
 		return
