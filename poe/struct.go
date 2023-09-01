@@ -9,7 +9,7 @@ type CompletionRequest struct {
 	Model    string    `json:"model"`
 	Messages []Message `json:"messages"`
 	Stream   bool      `json:"stream"`
-	Stop     []string  `json:"stop"`
+	Stop     []string  `json:"stop" default:[]`
 }
 type CompletionResponse struct {
 	ID      string   `json:"id"`
