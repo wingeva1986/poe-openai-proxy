@@ -28,7 +28,7 @@ func Setup(engine *gin.Engine) {
 			c.JSON(400, "bad request")
 			return
 		}
-		util.Logger.Info("req:"+req)
+		util.Logger.Info("req:"+json.Marshal(req))
 		for _, msg := range req.Messages {
 			if msg.Role != "system" && msg.Role != "user" && msg.Role != "assistant" {
 				c.JSON(400, "role of message validation failed: "+msg.Role)
