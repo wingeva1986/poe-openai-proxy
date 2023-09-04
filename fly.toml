@@ -1,8 +1,8 @@
-[env]
-  PRIMARY_REGION = "hkg"
+
+primary_region = "hkg"
 
 [http_service]
   internal_port = 3700
   force_https = true
-  auto_stop_machines = true
+  auto_stop_machines = false
   auto_start_machines = true
