@@ -55,3 +55,5 @@ api-timeout = 12
 	"Claude-instant" = "a2"
 	"Claude-instant-100k" = "a2_100k"
 	"Claude+" = "a2_2"
+        "gpt-3.5-turbo-instruct"="chinchilla_instruct"
+	"gpt-3.5-instruct"="chinchilla_instruct"
