@@ -57,3 +57,4 @@ api-timeout = 12
 	"Claude+" = "a2_2"
         "gpt-3.5-turbo-instruct"="chinchilla_instruct"
 	"gpt-3.5-i"="chinchilla_instruct"
+        "gpt-web"="websearch"
